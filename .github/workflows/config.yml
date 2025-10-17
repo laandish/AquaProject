@@ -15,7 +15,7 @@ jobs:
           ref: gh-pages
           path: ./.github/gh-pages
 
-      - name: Run UI-tests via docker-compose
+      - name: Run UI-tests via docker compose
         env:
           LOGIN: ${{ secrets.LOGIN }}
           PASSWORD: ${{ secrets.PASSWORD }}
