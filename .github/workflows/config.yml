@@ -9,6 +9,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Build regression image
+        run: docker compose build regression
+
+
       - name: Checkout (copy) gh-pages repository to GitHub runner
         uses: actions/checkout@v2
         with:
@@ -19,7 +23,7 @@ jobs:
         env:
           LOGIN: ${{ secrets.LOGIN }}
           PASSWORD: ${{ secrets.PASSWORD }}
-        run: |
+        run:
           docker compose up --exit-code-from regression || true
 
       - name: Copy history from gh-pages to allure-results
